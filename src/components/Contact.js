@@ -27,6 +27,7 @@ export default class Contact extends React.Component {
                 }
             ]
         };
+        // binding handler and this obj
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
@@ -59,7 +60,7 @@ export default class Contact extends React.Component {
                     <ContactInfo
                         contact={contact}
                         key={i}
-                        onClick={()=>this.handleClick(i)} // 컴포넌트에는 적용안되며 해당 컴포넌트의 props로 넘겨서 사용.
+                        onClick={()=>this.handleClick(i)} // 컴포넌트에는 적용안되며 해당 컴포넌트의 props로 넘겨서 사용. 바로 사용하는 것이 아니라 arrow function 사용해서 클릭되면 실행되도록
                     />
                 );
             });
@@ -76,7 +77,8 @@ export default class Contact extends React.Component {
                 />
                 <div>{mapToComponent(this.state.contactData)}</div>
                 <ContactDetails
-                    isSelected={this.state.selectedKey != -1}
+                    isSelected={this.state.selectedKey != -1} // 선택되면 true 전달
+                    contact={this.state.contactData[this.state.selectedKey]} // 선택된 인덱스에 해당하는 주소 반영
                 />
             </div>
         );

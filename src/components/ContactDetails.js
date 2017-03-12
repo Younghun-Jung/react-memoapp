@@ -16,14 +16,18 @@ export default class ContactDetails extends React.Component {
                 {
                     this.props.isSelected ? details : blank /*props로 넘긴 isSelected 분기*/
                 }
+                <button onClick={this.props.onRemove}>Remove</button>
             </div>
         );
     }
 }
 
 ContactDetails.defaultProps = {
-    contact: { /*선택되지 않을 경우의 name과 phone 기본값 설정*/
+    contact: { //선택되지 않을 경우의 name과 phone 기본값 설정
         name: '',
         phone: ''
+    },
+    onRemove: () => {
+        console.error('onRemove is not defined')
     }
 }

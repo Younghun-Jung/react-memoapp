@@ -69,7 +69,7 @@ export default class Contact extends React.Component {
         this.setState({ // immutability helper 사용
             contactData: update(this.state.contactData,
                 {
-                    [this.state.selectedKey]: {
+                    [this.state.selectedKey]: { // selectedKey 번째 아이템을 수정
                         name: { $set: name},
                         phone: { $set: phone }
                     }
@@ -77,6 +77,7 @@ export default class Contact extends React.Component {
             )
         })
     }
+
     render() {
         const mapToComponent = (data) => {
             data.sort((a, b) => {

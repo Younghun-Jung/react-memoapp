@@ -41,6 +41,8 @@ export default class ContactCreate extends React.Component {
                         value={this.state.name}
                         onChange = {this.handleChange}
                     />
+                </p>
+                <p>
                     <input
                         type="text"
                         name="phone"

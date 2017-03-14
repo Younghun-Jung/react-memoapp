@@ -14,21 +14,22 @@ export default class ContactDetails extends React.Component {
         this.handleToggle = this.handleToggle.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleToggle() {
-        if(!this.state.isEdit) {
+        if(!this.state.isEdit) { // edit 모드에 들어가면,
             this.setState({
                 name: this.props.contact.name,
                 phone: this.props.contact.phone
             })
-        } else {
+        } else { // edit 모드에서 빠져나오면서 반영
             this.handleEdit();
         }
         this.setState({ // 비동기임을 명심.
             isEdit: !this.state.isEdit
         });
-        console.log(this.state.isEdit); //this.setState는 비동기이므로 isEdit이 토글되기도 전에 console.log(...) 실행되므로 최초에 false로 나옴.
+        //console.log(this.state.isEdit); //this.setState는 비동기이므로 isEdit이 토글되기도 전에 console.log(...) 실행되므로 최초에 false로 나옴.
     }
     handleChange(e) {
         let nextState = {};
@@ -37,6 +38,11 @@ export default class ContactDetails extends React.Component {
     }
     handleEdit() {
         this.props.onEdit(this.state.name, this.state.phone);
+    }
+    handleKeyPress(e) {
+        if(e.charCode === 13) {
+            this.handleToggle();
+        }
     }
 
     render() {
@@ -59,6 +65,7 @@ export default class ContactDetails extends React.Component {
                         placeholder="name"
                         value={this.state.name}
                         onChange = {this.handleChange}
+                        onKeyPress = {this.handleKeyPress}
                     />
                 </p>
                 <p>
@@ -68,6 +75,7 @@ export default class ContactDetails extends React.Component {
                         placeholder="phone"
                         value={this.state.phone}
                         onChange = {this.handleChange}
+                        onKeyPress = {this.handleKeyPress}
                     />
                 </p>
             </div>

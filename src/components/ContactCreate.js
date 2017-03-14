@@ -9,6 +9,7 @@ export default class ContactCreate extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleChange(e) {
@@ -17,7 +18,7 @@ export default class ContactCreate extends React.Component {
         this.setState(nextState); // state에 전달
     }
     handleClick() {
-        const contact = { // contact는 만들어지면 수정될 일이 없으므로 const 선언
+        const contact = {
             name: this.state.name,
             phone: this.state.phone
         }
@@ -29,6 +30,12 @@ export default class ContactCreate extends React.Component {
             phone: ''
         });
     }
+    handleKeyPress(e) {
+        if(e.charCode === 13) {
+            this.handleClick();
+        }
+    }
+
     render() {
         return (
             <div>
@@ -40,6 +47,7 @@ export default class ContactCreate extends React.Component {
                         placeholder="name"
                         value={this.state.name}
                         onChange = {this.handleChange}
+                        onKeyPress = {this.handleKeyPress}
                     />
                 </p>
                 <p>
@@ -49,6 +57,7 @@ export default class ContactCreate extends React.Component {
                         placeholder="phone"
                         value={this.state.phone}
                         onChange = {this.handleChange}
+                        onKeyPress = {this.handleKeyPress}
                     />
                 </p>
                 <button onClick={this.handleClick}>Create</button>

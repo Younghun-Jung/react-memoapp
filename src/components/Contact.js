@@ -118,6 +118,7 @@ export default class Contact extends React.Component {
                     isSelected={this.state.selectedKey != -1} // 선택되면 true 전달
                     contact={this.state.contactData[this.state.selectedKey]} // 선택된 인덱스에 해당하는 주소 반영
                     onRemove={this.handleRemove} // ContactDetails 컴포넌트에 handleRemove를 props로 전달
+                    onEdit={this.handleEdit} // ContactDetails 컴포넌트에 handleEdit을 props로 전달
                 />
                 <ContactCreate
                     onCreate = {this.handleClick} // ContactCreate 컴포넌트에 handleClick를 props로 전달

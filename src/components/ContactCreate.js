@@ -29,6 +29,8 @@ export default class ContactCreate extends React.Component {
             name: '',
             phone: ''
         });
+        // contact 생성 후 name input에 focus
+        this.nameInput.focus();
     }
     handleKeyPress(e) {
         if(e.charCode === 13) {
@@ -48,6 +50,9 @@ export default class ContactCreate extends React.Component {
                         value={this.state.name}
                         onChange = {this.handleChange}
                         onKeyPress = {this.handleKeyPress}
+                        ref = {(ref) => {
+                            this.nameInput = ref // ref를 사용하여 input에 접근
+                        }}
                     />
                 </p>
                 <p>

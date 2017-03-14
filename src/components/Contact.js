@@ -121,7 +121,7 @@ export default class Contact extends React.Component {
                     onEdit={this.handleEdit} // ContactDetails 컴포넌트에 handleEdit을 props로 전달
                 />
                 <ContactCreate
-                    onCreate = {this.handleClick} // ContactCreate 컴포넌트에 handleClick를 props로 전달
+                    onCreate = {this.handleCreate} // ContactCreate 컴포넌트에 handleCreate를 props로 전달
                 />
             </div>
         );
